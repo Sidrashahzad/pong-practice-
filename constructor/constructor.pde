@@ -18,12 +18,14 @@ void setup() {
   
   //population 
    myBall = new Ball();
+   color pongtablecolor;//ERROR move to TabLe CLASS
    //yourBall = new Ball();
 // yourBall.x
 }//end setup
 
 void draw() {
   myBall.draw();
+  background(pongtablecolor);//ERROR nightmode is known in class not driver  
   fill(QuitbuttonColor);
   rect(QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight);
    if ( mouseX >= QuitrectX && mouseX<= QuitrectX+QuitrectWidth && mouseY >=QuitrectY && mouseY <= QuitrectY+QuitrectHeight)

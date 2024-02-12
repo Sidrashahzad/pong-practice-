@@ -1,8 +1,9 @@
+/*known ERROR
+Night Mode : Ball color ;*/
 class Ball {
   float x, y, diameter;
   color colour;
-  float xspeed, yspeed;
-  int xDirection, Ydirection;
+  float xspeed, yspeed,XDirection, YDirection;
   ///
   //constructor
   Ball() {
@@ -17,27 +18,28 @@ class Ball {
     y = startY;
     diameter = referentMeasure*1/20;
     colour = color( random(0, 225), random(255), random(255) );
-
-    xspeed = displayWidth/displayWidth;//=1
-    yspeed = displayHeight/ displayHeight;//=1
+    // xspeed=yspeed;
+    xspeed =1;
+    yspeed =1;
+    XDirection = -1;
+    YDirection = -1;
   }// end constructor
   void draw() {
     fill(colour);
     ellipse(x, y, diameter, diameter);
     fill(0);
+    step();
   }
   void step() {
+    bounce();
     x += xspeed;
     y += yspeed;
-    xDirection = -1;
-    ydirection = -1;
+   
   }//end step
-  void bounce() {
-    if () {
-      xspeed+=-1*xDirection;
-    }
-     if () {
-       Yspeed+=-1*ydirection;
-    }
-  }//bounce
-}
+ 
+   void bounce() {
+    if (x < 0+diameter*1/2 || x > displayWidth(diameter*1/2))  xspeed *=  XDirection;
+    
+    if (y < 0+diameter*1/2 || y > displayHeight (diameter*1/2)) yspeed *= YDirection;   
+ }//bounce     
+}   
