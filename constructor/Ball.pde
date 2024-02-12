@@ -21,8 +21,8 @@ class Ball {
     // xspeed=yspeed;
     xspeed =1;
     yspeed =1;
-    XDirection = -1;
-    YDirection = -1;
+    XDirection = int(randdom(-1,1)
+    YDirection = int1;
   }// end constructor
   void draw() {
     fill(colour);
@@ -30,7 +30,7 @@ class Ball {
     fill(0);
     step();
   }
-  void step() {
+  void step() { int
     bounce();
     x += xspeed;
     y += yspeed;
@@ -38,8 +38,7 @@ class Ball {
   }//end step
  
    void bounce() {
-    if (x < 0+diameter*1/2 || x > displayWidth(diameter*1/2))  xspeed *=  XDirection;
-    
-    if (y < 0+diameter*1/2 || y > displayHeight (diameter*1/2)) yspeed *= YDirection;   
+    if (x < 0+diameter*1/2 || x > displayWidth -(diameter*1/2))  xspeed *=  XDirection;
+    if (y < 0+diameter*1/2 || y > displayHeight - (diameter*1/2)) yspeed *= YDirection;   
  }//bounce     
 }   
