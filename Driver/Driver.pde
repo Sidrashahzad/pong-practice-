@@ -51,3 +51,5 @@ void mousePressed() {
 
 void keyPressed() {
 }//end keyPressed
+
+void ballCollesions(){}
