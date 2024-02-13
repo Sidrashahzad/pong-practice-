@@ -1,10 +1,12 @@
 //Globlal Variables
 Ball myBall;//Both half's of constructor 
- //Ball yourBall;
+Ball yourBall;
 float QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight;
 color QuitbuttonColor;
 color red = #F52A2A;
 color grey = #A09999;
+color pongtablecolor = 255 ;//ERROR move to TabLe CLASS
+
 void setup() {
   fullScreen();
   
@@ -18,14 +20,17 @@ void setup() {
   
   //population 
    myBall = new Ball();
-   color pongtablecolor;//ERROR move to TabLe CLASS
-   //yourBall = new Ball();
+   yourBall = new Ball();
 // yourBall.x
 }//end setup
 
 void draw() {
+ 
+ background(pongtablecolor);//ERROR nightmode is known in class not driver  
   myBall.draw();
-//ckground(pongtablecolor);//ERROR nightmode is known in class not driver  
+  // add delay in paddle example 
+  yourBall.draw();
+//  println(myBall.XDirection, myBall.YDirection);
   fill(QuitbuttonColor);
   rect(QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight);
    if ( mouseX >= QuitrectX && mouseX<= QuitrectX+QuitrectWidth && mouseY >=QuitrectY && mouseY <= QuitrectY+QuitrectHeight)
