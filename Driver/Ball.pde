@@ -4,7 +4,7 @@ class Ball {
   float x, y, diameter;
   color colour;
   float xspeed, yspeed, xspeedChange, yspeedChange;
-  float gravity;
+  float gravity= 0.0;
   // static int count =25;
   //constructor
   Ball(float gravityparameter) {
@@ -59,6 +59,7 @@ class Ball {
   }
   void step() {
     bounce();
+    yspeed = gravity;
     x += xspeed*xspeedChange;
     y += yspeed*xspeedChange;
   }//end step
