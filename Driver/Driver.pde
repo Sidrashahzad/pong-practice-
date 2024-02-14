@@ -24,7 +24,7 @@ void setup() {
   // yourBall = new Ball();
  
   for (int i=0; firework.length; 1++) {
-      firework[i] = new firework();
+      firework[i] = new Ball(0.5);
 
   }
   // yourBall.x

@@ -7,7 +7,7 @@ class Ball {
   float gravity;
   // static int count =25;
   //constructor
-  Ball(float gravity) {
+  Ball(float gravityparameter) {
     //constructor Is ..... hard coded single variable object
     //local vairables deleted at end of constructor
     int startX = displayWidth *1/2;
@@ -35,7 +35,7 @@ class Ball {
     diameter = random(displayWidth*1/25);
     xspeed = random(-5,5);
     yspeed = random(-5,5);
-    gravity = 0.5;
+    gravity = gravityparameter;
   }//end firework  Ball
   float XDirection() {
     float XDirection = int(random(-4, 4));//float
