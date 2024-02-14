@@ -1,12 +1,13 @@
-/*known ERROR
- Night Mode : Ball color ;*/
+//known ERROR
+//Night Mode : Ball color ;
 class Ball {
   float x, y, diameter;
   color colour;
   float xspeed, yspeed, xspeedChange, yspeedChange;
-  ///
+  float gravity;
+  // static int count =25;
   //constructor
-  Ball() {
+  Ball(float gravity) {
     //constructor Is ..... hard coded single variable object
     //local vairables deleted at end of constructor
     int startX = displayWidth *1/2;
@@ -14,19 +15,28 @@ class Ball {
     int referentMeasure = (displayWidth<displayHeight)?displayWidth:displayHeight;
     //
     //object variables
-  this.  x = startX;
-  this.  y = startY;
-  this.  diameter = referentMeasure*1/20;
-  this.   colour = color( random(0, 225), random(255), random(255) );
+    this.  x = startX;
+    this.  y = startY;
+    this.  diameter = referentMeasure*1/20;
+    this.   colour = color( random(0, 225), random(255), random(255) );
     // xspeed=yspeed;
-  this.   xspeed = XDirection();
-  this.  yspeed = YDirection();
+    this.   xspeed = XDirection();
+    this.  yspeed = YDirection();
     //Error; Random will choose ZERO, not only -1 and 1
-  this.  xspeedChange = 1;
-  this.  yspeedChange = 1;
-    
-  }// end constructor
-
+    this.  xspeedChange = 1;
+    this.  yspeedChange = 1;
+  }// end  ball constructor
+// multible constructors 
+  firework() {
+    //Ball();//place holder 
+    x = mouseX;// \error trigger when the ball enters the goal are
+    y = mouseY;// \error trigger when the ball enters the goal are
+    colour = color( random(0, 225), random(255), random(255) );
+    diameter = random(displayWidth*1/25);
+    xspeed = random(-5,5);
+    yspeed = random(-5,5);
+    gravity = 0.5;
+  }//end firework  Ball
   float XDirection() {
     float XDirection = int(random(-4, 4));//float
     while (XDirection==0) {
@@ -37,7 +47,7 @@ class Ball {
   float YDirection() {
     float YDirection =  int(random(-4, 4));
     while (YDirection==0) {
-        YDirection = int(random(-4, 4));
+      YDirection = int(random(-4, 4));
     }
     return YDirection;
   }// end ydirection
