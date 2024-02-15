@@ -1,7 +1,8 @@
 //Globlal Variables
 Ball myBall;//Both half's of constructor
 //Ball yourBall;
-Ball[] firework = new Ball[25];
+Ball[] fireworks = new Ball[25];
+Ball movedBall;
 float QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight;
 color QuitbuttonColor;
 color red = #F52A2A;
@@ -22,20 +23,22 @@ void setup() {
   //population
   myBall = new Ball();
   // yourBall = new Ball();
- 
-  for (int i=0; firework.length; 1++) {
-      firework[i] = new Ball(0.5);
+  for (int i=0; i < fireworks.length; i++) {
+      fireworks[i] = new Ball(displayWidth*-1, displayHeight*-1,0.5);
 
   }
   // yourBall.x
+  movedBall = new Ball(displayWidth*-1, displayHeight*-1)
 }//end setup
 
 void draw() {
 
   background(pongtablecolor);//ERROR nightmode is known in class not driver
   myBall.draw();
-   for (int i=0; fireworks.length; 1++) {
-      firework[i] = new fireworks(i).draw;
+   for (int i=0; i < fireworks.length; i++) {
+      fireworks[i].draw();
+   }
+   println(fireworks[0].y);
   // add delay in paddle example
   // yourBall.draw();
   //  println(myBall.XDirection, myBall.YDirection);
@@ -50,12 +53,11 @@ void draw() {
 } //end draw
 
 void mousePressed() {
-  if ( mouseX >= QuitrectX && mouseX<= QuitrectX+QuitrectWidth && mouseY >=QuitrectY && mouseY <= QuitrectY+QuitrectHeight) exit();
-
-for (int i=0; firework.length; ++) {
-      firework[i] = new firework();
+ if ( mouseX >= QuitrectX && mouseX<= QuitrectX+QuitrectWidth && mouseY >=QuitrectY && mouseY <= QuitrectY+QuitrectHeight) exit();
+for (int i=0; i < fireworks.length; i++) {
+      fireworks[i] = new Ball(mouseX, mouseY, 0.5);
 }
-
+movedBall = new Ball(mouseX, mouseY, myBall.diameter)
 }//end mousePressed
 
 
