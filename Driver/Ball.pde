@@ -39,8 +39,8 @@ class Ball {
   }//end firework  Ball
 // must look like ball instance and make old ball instance disappear 
   Ball(float xparameter, float yparameter) {
-    this.x = xpaarameter;
-    this.y = yparameter
+ //   this.x = xpaarameter;
+   // this.y = yparameter;
     //
     //
     
