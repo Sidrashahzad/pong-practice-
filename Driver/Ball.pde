@@ -43,7 +43,6 @@ class Ball {
    // this.y = yparameter;
     //
     //
-    
     //
     
     //

@@ -1,10 +1,10 @@
 //Globlal Variables
 Ball myBall;//Both half's of constructor
 //Ball yourBall;
-Ball[] fireworks = new Ball[50];
-//Ball movedBall;
+Ball[] fireworks = new Ball[25];
+Ball movedBall;
 float QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight;
-float netX,netY,netX2,neetY2;
+float netX, netY, netX2, neetY2;
 color QuitbuttonColor;
 color red = #F52A2A;
 color grey = #A09999;
@@ -24,18 +24,18 @@ void setup() {
   QuitrectWidth= displayWidth*1/25;
   QuitrectHeight = displayHeight*1/20;
 
-netX = displayWidth*1/2;
-netY = displayHeight*0;
-netX2= displayWidth*1/2;
-neetY2=  displayHeight*1;
+  netX = displayWidth*1/2;
+  netY = displayHeight*0;
+  netX2= displayWidth*1/2;
+  neetY2=  displayHeight*1;
   //population
   myBall = new Ball();
-  // yourBall = new Ball();
+//  yourBall = new Ball();
   for (int i=0; i < fireworks.length; i++) {
     fireworks[i] = new Ball(displayWidth*-1, displayHeight*-1, 0.5);
   }
   // yourBall.x
-  // movedBall = new Ball(displayWidth*-1, displayHeight*-1)
+  movedBall = new Ball(displayWidth*-1, displayHeight*-1, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.xspeedChange);
 }//end setup
 void textPre() {
   fill(Black);
@@ -50,12 +50,15 @@ void draw() {
     fireworks[i].draw();
   }
   println(fireworks[0].y);
+
   // add delay in paddle example
   // yourBall.draw();
   //  println(myBall.XDirection, myBall.YDirection);
-  fill(QuitbuttonColor);
+ 
+
+    fill(QuitbuttonColor);
   rect(QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight);
- Quittext();
+  Quittext();
   if ( mouseX >= QuitrectX && mouseX<= QuitrectX+QuitrectWidth && mouseY >=QuitrectY && mouseY <= QuitrectY+QuitrectHeight)
   {
     QuitbuttonColor = red;
@@ -63,8 +66,8 @@ void draw() {
     QuitbuttonColor = grey;
   }
   strokeWeight(5);
-  line(netX,netY,netX2,neetY2);
-  fill(white);
+  line(netX, netY, netX2, neetY2);
+  strokeWeight(2);
 } //end draw
 
 void mousePressed() {
@@ -72,15 +75,17 @@ void mousePressed() {
   for (int i=0; i < fireworks.length; i++) {
     fireworks[i] = new Ball(mouseX, mouseY, 0.5);
   }
-  //movedBall = new Ball(mouseX, mouseY, myBall.diameter)
+  movedBall = new Ball(mouseX, mouseY, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.xspeedChange);
+
 }//end mousePressed
+
 void textPost() {
   fill(white);
 }
 void Quittext() {
   textPre();
   text(exit, QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight);
-   textPost();
+  textPost();
 }
 void keyPressed() {
 }//end keyPressed
