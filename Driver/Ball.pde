@@ -38,10 +38,16 @@ class Ball {
     gravity = gravityparameter;
   }//end firework  Ball
 // must look like ball instance and make old ball instance disappear 
-  Ball(float xparameter, float yparameter) {
- //   this.x = xpaarameter;
-   // this.y = yparameter;
-    //
+  Ball(float xParameter, float yParameter, float diameterParameter, color colourParameter, float xSpeedParameter, float ySpeedParameter, float xspeedChangeParameter, float yspeedChangeParameter) {
+    this.x = xParameter;
+    this.y = yParameter;
+    this.diameter= diameterParameter;
+    this.colour= colourParameter;
+    this.xspeed= xSpeedParameter;
+    this.yspeed= ySpeedParameter;
+    this.xspeedChange= xspeedChangeParameter;
+    this.yspeedChange= yspeedChangeParameter;
+
     //
     //
     

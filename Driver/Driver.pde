@@ -4,7 +4,9 @@ Ball myBall;//Both half's of constructor
 Ball[] fireworks = new Ball[25];
 Ball movedBall;
 float QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight;
-float netX, netY, netX2, neetY2;
+float netX, netY, netX2, netY2;
+float goalX, goalY, goalX2, goalY2;
+
 color QuitbuttonColor;
 color red = #F52A2A;
 color grey = #A09999;
@@ -27,15 +29,20 @@ void setup() {
   netX = displayWidth*1/2;
   netY = displayHeight*0;
   netX2= displayWidth*1/2;
-  neetY2=  displayHeight*1;
+  netY2=  displayHeight*1;
+  
+  goalX= displayWidth*1/20;
+  goalY=displayHeight*0;
+  goalX2=displayWidth*1/20;
+  goalY2= displayHeight*1;
   //population
   myBall = new Ball();
-//  yourBall = new Ball();
+  //  yourBall = new Ball();
   for (int i=0; i < fireworks.length; i++) {
     fireworks[i] = new Ball(displayWidth*-1, displayHeight*-1, 0.5);
   }
   // yourBall.x
-  movedBall = new Ball(displayWidth*-1, displayHeight*-1, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.xspeedChange);
+  movedBall = new Ball(displayWidth*-1, displayHeight*-1, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.yspeedChange);
 }//end setup
 void textPre() {
   fill(Black);
@@ -45,18 +52,25 @@ void textPre() {
 void draw() {
 
   background(pongtablecolor);//ERROR nightmode is known in class not driver
-  myBall.draw();
-  for (int i=0; i < fireworks.length; i++) {
-    fireworks[i].draw();
-  }
-  println(fireworks[0].y);
+ // if (myBall.disappear == true) 
+// {  } else {
+ // myBall.draw();}
+  //println(fireworks[0].y);
 
   // add delay in paddle example
   // yourBall.draw();
   //  println(myBall.XDirection, myBall.YDirection);
- 
-
-    fill(QuitbuttonColor);
+if( myBall.x<(2*myBall.diameter) || myBall.x>(displayWidth-(2*myBall.diameter))) myBall.goalExplosion(myBall.x, myBall.y, gravity);
+{
+  
+  
+ // if( myBall.x<(2*myBall.diameter)|| myBall.x>(displayWidth-(2*myBall.diameter))) netExplosion(myBall.x, myBall.y);
+  //if( movedBall.x<(2*myBall.diameter)|| movedBall.x>(displayWidth-(2*movedBall.diameter))) netExplosion( movedBall.x, movedBall.y );
+}
+for (int i=0; i<fireworks.length; i++){
+  fireworks[i].draw();
+}
+  fill(QuitbuttonColor);
   rect(QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight);
   Quittext();
   if ( mouseX >= QuitrectX && mouseX<= QuitrectX+QuitrectWidth && mouseY >=QuitrectY && mouseY <= QuitrectY+QuitrectHeight)
@@ -66,8 +80,10 @@ void draw() {
     QuitbuttonColor = grey;
   }
   strokeWeight(5);
-  line(netX, netY, netX2, neetY2);
+  line(netX, netY, netX2, netY2);
   strokeWeight(2);
+  
+  line(goalX, goalY, goalX2, goalY2);
 } //end draw
 
 void mousePressed() {
@@ -75,8 +91,7 @@ void mousePressed() {
   for (int i=0; i < fireworks.length; i++) {
     fireworks[i] = new Ball(mouseX, mouseY, 0.5);
   }
-  movedBall = new Ball(mouseX, mouseY, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.xspeedChange);
-
+  movedBall = new Ball(mouseX, mouseY, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.yspeedChange);
 }//end mousePressed
 
 void textPost() {
