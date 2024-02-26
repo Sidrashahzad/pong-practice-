@@ -5,9 +5,10 @@ class Ball {
   color colour;
   float xspeed, yspeed, xspeedChange=1.0, yspeedChange=1.0;
   float gravity= 0.0;
-  // static int count =25;
-  //constructor
-  Ball() {
+  Boolean disappear=false, netExplosion=false;
+    // static int count =25;
+    //constructor
+    Ball() {
     //constructor Is ..... hard coded single variable object
     //local vairables deleted at end of constructor
     int startX = displayWidth *1/2;
@@ -23,8 +24,8 @@ class Ball {
     this.xspeed = XDirection();
     this.yspeed = YDirection();
     //Error; Random will choose ZERO, not only -1 and 1
-    this.xspeedChange = 1.0;
-    this.yspeedChange = 1.0;
+    this.xspeedChange = 2.0;
+    this.yspeedChange = 2.0;
   }// end  ball constructor
   // multible constructors
   Ball(float xparameter, float yparameter, float gravityparameter) {
@@ -37,7 +38,7 @@ class Ball {
     this.yspeed = random(-5, 5);
     gravity = gravityparameter;
   }//end firework  Ball
-// must look like ball instance and make old ball instance disappear 
+  // must look like ball instance and make old ball instance disappear
   Ball(float xParameter, float yParameter, float diameterParameter, color colourParameter, float xSpeedParameter, float ySpeedParameter, float xspeedChangeParameter, float yspeedChangeParameter) {
     this.x = xParameter;
     this.y = yParameter;
@@ -50,7 +51,7 @@ class Ball {
 
     //
     //
-    
+
     //
   }//end moved ball
   float XDirection() {
@@ -81,7 +82,13 @@ class Ball {
   }//end step
 
   void bounce() {
-    if (x < 0+diameter*1/2 || x > displayWidth - (diameter*1/2))  xspeed *= -1;
-    if (y < 0+diameter*1/2 || y > displayHeight - (diameter*1/2)) yspeed *= -1;
+    if (x < 0+(diameter*1/2) || x > displayWidth - (diameter*1/2))  xspeed *= -1;
+    if (y < 0+(diameter*1/2) || y > displayHeight - (diameter*1/2)) yspeed *= -1;
   }//bounce
+  void goalExplosion(float xParameter, float yParameter, float gravitya){
+for(int i=0; i < fireworks.length; i++){
+fireworks[i] = new Ball(xParameter, yParameter, gravitya);
+}
+
+  }//end goal explosion
 }

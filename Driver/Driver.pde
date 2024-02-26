@@ -13,6 +13,7 @@ color grey = #A09999;
 color white = #FAFFFA;
 color Black = #000000;
 color pongtablecolor = 255 ;//ERROR move to TabLe CLASS
+float gravitya=-0.5;
 String exit="X";
 PFont Pfont;
 void setup() {
@@ -30,7 +31,7 @@ void setup() {
   netY = displayHeight*0;
   netX2= displayWidth*1/2;
   netY2=  displayHeight*1;
-  
+
   goalX= displayWidth*1/20;
   goalY=displayHeight*0;
   goalX2=displayWidth*1/20;
@@ -52,45 +53,36 @@ void textPre() {
 void draw() {
 
   background(pongtablecolor);//ERROR nightmode is known in class not driver
- // if (myBall.disappear == true) 
-// {  } else {
- // myBall.draw();}
-  //println(fireworks[0].y);
-
-  // add delay in paddle example
-  // yourBall.draw();
-  //  println(myBall.XDirection, myBall.YDirection);
-if( myBall.x<(2*myBall.diameter) || myBall.x>(displayWidth-(2*myBall.diameter))) myBall.goalExplosion(myBall.x, myBall.y, gravity);
-{
+  if ( myBall.disappear == true){
+  //empty IF
+  }else{
+    myBall.draw();
+myBall.disappear = false;
+  }
+  if(movedBall.disappear == true)
+  {
+} else {
+  movedBall.draw();
+  movedBall.disappear = false;
   
-  
- // if( myBall.x<(2*myBall.diameter)|| myBall.x>(displayWidth-(2*myBall.diameter))) netExplosion(myBall.x, myBall.y);
-  //if( movedBall.x<(2*myBall.diameter)|| movedBall.x>(displayWidth-(2*movedBall.diameter))) netExplosion( movedBall.x, movedBall.y );
 }
-for (int i=0; i<fireworks.length; i++){
+
+
+if (myBall.x<(2*myBall.diameter) || myBall.x>(displayWidth-(2*myBall.diameter))) myBall.goalExplosion(myBall.x, myBall.y, gravitya);
+
+for (int i=0; i < fireworks.length; i++) {
   fireworks[i].draw();
 }
-  fill(QuitbuttonColor);
-  rect(QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight);
-  Quittext();
-  if ( mouseX >= QuitrectX && mouseX<= QuitrectX+QuitrectWidth && mouseY >=QuitrectY && mouseY <= QuitrectY+QuitrectHeight)
-  {
-    QuitbuttonColor = red;
-  } else {
-    QuitbuttonColor = grey;
-  }
-  strokeWeight(5);
-  line(netX, netY, netX2, netY2);
-  strokeWeight(2);
-  
-  line(goalX, goalY, goalX2, goalY2);
+
+strokeWeight(5);
+line(netX, netY, netX2, netY2);
+strokeWeight(2);
+line(goalX, goalY, goalX2, goalY2);
 } //end draw
 
+
 void mousePressed() {
-  if ( mouseX >= QuitrectX && mouseX<= QuitrectX+QuitrectWidth && mouseY >=QuitrectY && mouseY <= QuitrectY+QuitrectHeight) exit();
-  for (int i=0; i < fireworks.length; i++) {
-    fireworks[i] = new Ball(mouseX, mouseY, 0.5);
-  }
+
   movedBall = new Ball(mouseX, mouseY, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.yspeedChange);
 }//end mousePressed
 
