@@ -5,7 +5,7 @@ class Ball {
   color colour;
   float xspeed, yspeed, xspeedChange=1.0, yspeedChange=1.0;
   float gravity= 0.0;
-  Boolean disappear=false, netExplosion=false;
+  Boolean disappear=false, goalExplosion=false;
     // static int count =25;
     //constructor
     Ball() {
