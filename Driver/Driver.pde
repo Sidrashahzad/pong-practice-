@@ -5,12 +5,10 @@ Ball myBall;//Both half's of constructor
 //Stars[] stars= new Star [NumberofStars];
 Ball[] fireworks = new Ball[25];
 Ball movedBall;
+ myPaddle= new Paddle();
+yourPaddle=new paddle();
 float QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight;
-float netX, netY, netX2, netY2;
-float goalX, goalY, goalX2, goalY2;
-float goalX3, goalY3, goalX4, goalY4;
-float PaddleX,PaddleY,PaddleWidth, PAddleHeight;
-float Paddle2X;
+  float netX, netY, netX2, netY2;
 float tabX,tabY,tabWidth,tabHeight;
 color QuitbuttonColor;
 color red = #F52A2A;
@@ -49,12 +47,7 @@ void setup() {
   goalX4= displayWidth*39/40;
   goalY4=displayHeight*1;
 
-  PaddleX=goalX;
-  PaddleY= displayHeight*0;
-  PaddleWidth=displayWidth*1/50;
-  PAddleHeight=displayHeight*1/9;
-  Paddle2X=goalX3-PaddleWidth;
-   
+ 
    
    tabX=displayWidth*0;
    tabY=displayHeight*0;
@@ -67,7 +60,7 @@ void setup() {
     fireworks[i] = new Ball(displayWidth*-1, displayHeight*-1, 0.5);
   }
   // yourBall.x
-  movedBall = new Ball(displayWidth*-1, displayHeight*-1, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.yspeedChange);
+ movedBall = new Ball(displayWidth*-1, displayHeight*-1, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.yspeedChange);
 }//end setup
 void textPre() {
   fill(Black);
@@ -98,16 +91,16 @@ void draw() {
   for (int i=0; i < fireworks.length; i++) {
     fireworks[i].draw();
   }
-
+ rect(PaddleX, mouseY, PaddleWidth, PAddleHeight);
+  rect(Paddle2X, mouseY, PaddleWidth, PAddleHeight);
+  color(ligtPurple);
+//rect(tabX,tabY,tabWidth,tabHeight);
   strokeWeight(5);
   line(netX, netY, netX2, netY2);
   strokeWeight(2);
-  line(goalX, goalY, goalX2, goalY2);
-  line(goalX3, goalY3, goalX4, goalY4);
-  rect(PaddleX, mouseY, PaddleWidth, PAddleHeight);
-  rect(Paddle2X, mouseY, PaddleWidth, PAddleHeight);
-  color(ligtPurple);
-rect(tabX,tabY,tabWidth,tabHeight);
+  //line(goalX, goalY, goalX2, goalY2);
+ // line(goalX3, goalY3, goalX4, goalY4);
+ 
 } //end draw
 
 
