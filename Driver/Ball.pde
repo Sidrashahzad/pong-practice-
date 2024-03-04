@@ -6,6 +6,9 @@ class Ball {
   float xspeed, yspeed, xspeedChange=1.0, yspeedChange=1.0;
   float gravity= 0.0;
   Boolean disappear=false, goalExplosion=false;
+  float goalX, goalY, goalX2, goalY2;
+  float goalX3, goalY3, goalX4, goalY4;
+  float PaddleX,PaddleWidth,Paddle2X;
     // static int count =25;
     //constructor
     Ball() {

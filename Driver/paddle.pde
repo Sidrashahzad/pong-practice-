@@ -3,8 +3,7 @@ class Paddle {
   //
   float tableX, tableY, tableWidth, tableHeight;
 
-  float goalX, goalY, goalX2, goalY2;
-  float goalX3, goalY3, goalX4, goalY4;
+  
   float PaddleX, PaddleY, PaddleWidth, PAddleHeight;
   float Paddle2X;
   float paddlecolor=#4C15CE;
@@ -19,7 +18,7 @@ class Paddle {
   Paddle2X=goalX3-PaddleWidth;
    color paddlecolor=#4C15CE;
   }//end paddle constructor
-  void draw() {
-  }//end draw
+ // void draw() {
+ //end draw
   // voids and returns
 }//end paddle class

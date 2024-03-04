@@ -5,10 +5,9 @@ Ball myBall;//Both half's of constructor
 //Stars[] stars= new Star [NumberofStars];
 Ball[] fireworks = new Ball[25];
 Ball movedBall;
- myPaddle= new Paddle();
-yourPaddle=new paddle();
+Paddle myPaddle,yourPaddle;
 float QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight;
-  float netX, netY, netX2, netY2;
+float netX, netY, netX2, netY2;
 float tabX,tabY,tabWidth,tabHeight;
 color QuitbuttonColor;
 color red = #F52A2A;
@@ -20,7 +19,7 @@ color pongtablecolor = 255 ;//ERROR move to TabLe CLASS
 float gravitya=-0.5;
 String exit="X";
 PFont Pfont;
-float delay=0.5;
+//float delay=0.5;
 void setup() {
   fullScreen();
 
@@ -37,16 +36,7 @@ void setup() {
   netX2= displayWidth*1/2;
   netY2=  displayHeight*1;
 
-  goalX= displayWidth*1/40;
-  goalY=displayHeight*0;
-  goalX2=displayWidth*1/40;
-  goalY2= displayHeight*1;
-
-  goalX3= displayWidth*39/40;
-  goalY3=displayHeight*0;
-  goalX4= displayWidth*39/40;
-  goalY4=displayHeight*1;
-
+  
  
    
    tabX=displayWidth*0;
@@ -61,7 +51,8 @@ void setup() {
   }
   // yourBall.x
  movedBall = new Ball(displayWidth*-1, displayHeight*-1, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.yspeedChange);
-}//end setup
+}
+//end setup
 void textPre() {
   fill(Black);
   textAlign(CENTER, CENTER);
@@ -91,10 +82,9 @@ void draw() {
   for (int i=0; i < fireworks.length; i++) {
     fireworks[i].draw();
   }
- rect(PaddleX, mouseY, PaddleWidth, PAddleHeight);
-  rect(Paddle2X, mouseY, PaddleWidth, PAddleHeight);
-  color(ligtPurple);
-//rect(tabX,tabY,tabWidth,tabHeight);
+
+ // color(ligtPurple);
+  rect(tabX,tabY,tabWidth,tabHeight);
   strokeWeight(5);
   line(netX, netY, netX2, netY2);
   strokeWeight(2);
@@ -118,5 +108,5 @@ void Quittext() {
   textPost();
 }
 void keyPressed() {
-  if ( key=='s'){ PaddleY=PaddleY+1;}
+ // if ( key=='s'){ PaddleY=PaddleY+1;}
 }//end keyPressed
