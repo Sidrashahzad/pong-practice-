@@ -51,6 +51,8 @@ void setup() {
   }
   // yourBall.x
  movedBall = new Ball(displayWidth*-1, displayHeight*-1, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.yspeedChange);
+ myPaddle = new Paddle(0, myBall.diameter);
+ yourPaddle = new Paddle(displayWidth, myBall,diameter);
 }
 //end setup
 void textPre() {

@@ -84,7 +84,7 @@ class Ball {
   }//end step
 
   void bounce() {
-    if (x < PaddleX+PaddleWidth+(diameter*1/2) || x > Paddle2X - (diameter*1/2))  xspeed *= -1;
+    if (x < 0+(diameter*1/2) || x > displayWidth - (diameter*1/2))  xspeed *= -1;
     if (y < 0+(diameter*1/2) || y > displayHeight - (diameter*1/2)) yspeed *= -1;
   }//bounce
   void goalExplosion(float xParameter, float yParameter, float gravitya){
