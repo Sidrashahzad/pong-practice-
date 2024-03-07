@@ -7,10 +7,9 @@ class Ball {
   float gravity= 0.0;
   Boolean disappear=false, goalExplosion=false;
 
-  float PaddleX,PaddleWidth,Paddle2X;
     // static int count =25;
     //constructor
-    Ball() {
+
     //constructor Is ..... hard coded single variable object
     //local vairables deleted at end of constructor
     int startX = displayWidth *1/2;

@@ -52,7 +52,7 @@ void setup() {
   // yourBall.x
  movedBall = new Ball(displayWidth*-1, displayHeight*-1, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.yspeedChange);
  myPaddle = new Paddle(0, myBall.diameter);
- yourPaddle = new Paddle(displayWidth, myBall,diameter);
+ yourPaddle = new Paddle(displayWidth, myBall.diameter);
 }
 //end setup
 void textPre() {
@@ -62,6 +62,8 @@ void textPre() {
 }
 void draw() {
 
+  myPaddle.draw();
+  yourPaddle.draw();
   background(pongtablecolor);//ERROR nightmode is known in class not driver
   if ( myBall.disappear == true) {
     //empty IF
@@ -109,6 +111,7 @@ void Quittext() {
   text(exit, QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight);
   textPost();
 }
-void keyPressed() {
- // if ( key=='s'){ PaddleY=PaddleY+1;}
-}//end keyPressed
+ void keyPressed() {
+    if( key=='W'| key=='w') myPaddle;
+    
+  }
