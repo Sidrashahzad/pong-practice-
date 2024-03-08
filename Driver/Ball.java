@@ -1,3 +1,3 @@
-class Ball {
+class Ball{
   // purejava
 }

@@ -7,55 +7,53 @@ class Paddle {
   float PaddleX, PaddleY, PaddleWidth, PaddleHeight, PaddleStartHeight;
   float paddlecolor=#4C15CE;
   float PaddleTravelDistance;
+  Boolean up=false, down=false;
   // overloaded constructor
   //Purpose left and right paddles
-  Paddle (float PaddleStartparameter float balldiameterParameter ) {
-    goalWidth = BalldiameterParameter*3;
-    PaddleWidth=BalldiameterParameter;
+  Paddle(float PaddleStartparameter, float ballDiameterParameter ) {
+    goalWidth = ballDiameterParameter*2;
+    PaddleWidth=ballDiameterParameter*1/2;
     tableY=displayHeight*1/10;
     tableHeight=displayHeight*8/10;
-    PaddleStartHeight = 1/4;//if easter egg number must be trapped
 
     //CAUTION netX will
     if (PaddleStartparameter==0)goalX=PaddleStartparameter;
     if (PaddleStartparameter==displayWidth)
     {
-      goalX = PaddleStartparameter-goalWidth*2-paddleWidth;
+      goalX = PaddleStartparameter-goalWidth*2-PaddleWidth;
     }
 
     this.PaddleX=goalX+goalWidth;
-    this.PaddleHeight=tableHeight*PaddleStartHeight;
     if (PaddleStartparameter==displayWidth)goalX=PaddleStartparameter-goalWidth;
+    this.PaddleStartHeight=0.25;
+    this.PaddleHeight=tableHeight*PaddleStartHeight;
     this.PaddleY= tableY+(tableHeight*1/2)-(PaddleHeight*1/2);//
 
-    PaddleHeight=displayHeight*1/9;
     // Paddle2X=goalX3-PaddleWidth;
-    color paddlecolor=#4C15CE;
-    this.PaddleTravelDistance=1;
-    tableX= displayWidth*0;
-    tableY= displayHeight*0;
-    tableWidth=displayWidth*1;
-    tableHeight=displayHeight*1;
-
-    goalX=tableX;
-    goalY=tableY;
-    goalWidth= displayWidth*1/10;
-    goalHeight=displayHeight*1;
-    goalX2=tableX-1/10;
-    goalY2=tableY;
+    paddlecolor=0;
+    this.PaddleTravelDistance=4;
   }//end paddle constructor
   void draw() {
-    rect(tableX, tableY, tableWidth, tableHeight);
-    rect(goalX, goalY, goalWidth, goalHeight);
-    rect(goalX2, goalY2, goalWidth, goalHeight);
+    fill(paddlecolor);
+    paddles();
+    fill(0);
+      if (up == true) movePaddleUp();
+    if (down == true)movePaddleDown();
     ///float goalX3, goalY3, goalX4, goalY4;
   }
-  void paddle() {
+  void paddles() {
     rect(PaddleX, PaddleY, PaddleWidth, PaddleHeight);
   }
 
-void paddleMoved(){}
-  //end draw  goalX, goalY, goalX2, goalY2;
-  //  float goalX3, goalY3, goalX4, goalY4;
-  // voids and returns
+  void movePaddleDown() {
+    PaddleY+=PaddleTravelDistance;
+    if (PaddleY>tableY+tableHeight-PaddleHeight) PaddleY=tableY+tableHeight-PaddleHeight;
+    down=false;
+  }
+
+  void movePaddleUp() {
+    PaddleY-=PaddleTravelDistance;
+    if(PaddleY<tableY)PaddleY=tableY;
+    up=false;
+  }
 }//end paddle class

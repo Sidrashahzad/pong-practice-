@@ -8,7 +8,7 @@ Ball movedBall;
 Paddle myPaddle,yourPaddle;
 float QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight;
 float netX, netY, netX2, netY2;
-float tabX,tabY,tabWidth,tabHeight;
+//float tabX,tabY,tabWidth,tabHeight;
 color QuitbuttonColor;
 color red = #F52A2A;
 color grey = #A09999;
@@ -39,10 +39,7 @@ void setup() {
   
  
    
-   tabX=displayWidth*0;
-   tabY=displayHeight*0;
-   tabWidth=displayWidth*1;
-   tabHeight =displayHeight*1/15;
+   
   //population
   myBall = new Ball();
   //  yourBall = new Ball();
@@ -61,10 +58,10 @@ void textPre() {
   textFont(Pfont, 20);
 }
 void draw() {
+  background(pongtablecolor);//ERROR nightmode is known in class not driver
 
   myPaddle.draw();
   yourPaddle.draw();
-  background(pongtablecolor);//ERROR nightmode is known in class not driver
   if ( myBall.disappear == true) {
     //empty IF
   } else {
@@ -88,9 +85,9 @@ void draw() {
   }
 
  // color(ligtPurple);
-  rect(tabX,tabY,tabWidth,tabHeight);
+  //rect(tabX,tabY,tabWidth,tabHeight);
   strokeWeight(5);
-  line(netX, netY, netX2, netY2);
+
   strokeWeight(2);
   //line(goalX, goalY, goalX2, goalY2);
  // line(goalX3, goalY3, goalX4, goalY4);
@@ -112,6 +109,8 @@ void Quittext() {
   textPost();
 }
  void keyPressed() {
-    if( key=='W'| key=='w') myPaddle;
-    
-  }
+    if( key=='W'| key=='w') myPaddle.up=true;
+    if( key=='S'| key=='s') myPaddle.down=true;
+    if( key==CODED| key==UP) myPaddle.up=true;
+    if( key==CODED| key==DOWN) myPaddle.down=true;
+}

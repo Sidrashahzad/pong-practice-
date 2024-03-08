@@ -9,7 +9,7 @@ class Ball {
 
     // static int count =25;
     //constructor
-
+ Ball(){
     //constructor Is ..... hard coded single variable object
     //local vairables deleted at end of constructor
     int startX = displayWidth *1/2;
@@ -27,7 +27,7 @@ class Ball {
     //Error; Random will choose ZERO, not only -1 and 1
     this.xspeedChange = 2.0;
     this.yspeedChange = 2.0;
-  }// end  ball constructor
+ }  // end  ball constructor
   // multible constructors
   Ball(float xparameter, float yparameter, float gravityparameter) {
     //Ball();//place holder
