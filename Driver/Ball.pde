@@ -96,6 +96,7 @@ fireworks[i] = new Ball(xParameter, yParameter, gravitya);
   tableY=tableYParameter;
   tableHeight=tableHeightParameter;
   tableWidth=tableXParameter+tableWidthParameter;
+  paddleX=(BallX<tableWidth*1/2)? myPaddleXParameter:yourPaddleParameter;
   paddleY=paddleYParameter;
   paddleWidth=paddleWidthParameter;
   paddleHeight=paddleHeightParameter;
