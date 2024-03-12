@@ -6,7 +6,7 @@ class Ball {
   float xspeed, yspeed, xspeedChange=1.0, yspeedChange=1.0;
   float gravity= 0.0;
   Boolean disappear=false, goalExplosion=false;
-
+  float tableY,tableHeight, paddleX;
     // static int count =25;
     //constructor
  Ball(){
@@ -92,4 +92,12 @@ fireworks[i] = new Ball(xParameter, yParameter, gravitya);
 }
 
   }//end goal explosion
+  void tableUpdate(float tableYParameter, float tableHeightParameter, float tableWidthParameter, float tableXParameter, float paddleXParameter, float paddleYParameter, float paddleWidthParameter, float paddleHeightParameter){
+  tableY=tableYParameter;
+  tableHeight=tableHeightParameter;
+  tableWidth=tableXParameter+tableWidthParameter;
+  paddleY=paddleYParameter;
+  paddleWidth=paddleWidthParameter;
+  paddleHeight=paddleHeightParameter;
+}
 }

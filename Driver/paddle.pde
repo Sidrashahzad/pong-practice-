@@ -37,7 +37,7 @@ class Paddle {
     fill(paddlecolor);
     paddles();
     fill(0);
-      if (up == true) movePaddleUp();
+    if (up == true) movePaddleUp();
     if (down == true)movePaddleDown();
     ///float goalX3, goalY3, goalX4, goalY4;
   }
@@ -48,12 +48,26 @@ class Paddle {
   void movePaddleDown() {
     PaddleY+=PaddleTravelDistance;
     if (PaddleY>tableY+tableHeight-PaddleHeight) PaddleY=tableY+tableHeight-PaddleHeight;
-    down=false;
   }
 
   void movePaddleUp() {
     PaddleY-=PaddleTravelDistance;
-    if(PaddleY<tableY)PaddleY=tableY;
-    up=false;
+    if (PaddleY<tableY)PaddleY=tableY;
   }
+  void keyPressedWASD() {
+     if ( key=='W'| key=='w') myPaddle.up=true;
+  if ( key=='S'| key=='s') myPaddle.down=true;
+  }//keyPressed
+  void keyPressedARROW() {
+    if ( key==CODED & key==UP) myPaddle.up=true;
+  if ( key==CODED & key==DOWN) myPaddle.down=true;
+  }//keyPressedARROW
+  void keyReleasedWASD() {
+    if ( key=='W'| key=='w') myPaddle.up=false;
+  if ( key=='S'| key=='s') myPaddle.down=false;
+  }//end keyReleasedWASD()
+  void keyReleasedARROW() {
+     if ( key==CODED & key==UP) myPaddle.up=false;
+  if ( key==CODED & key==DOWN) myPaddle.down=false;
+  }//end keyReleasedWASD
 }//end paddle class

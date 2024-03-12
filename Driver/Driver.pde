@@ -5,7 +5,7 @@ Ball myBall;//Both half's of constructor
 //Stars[] stars= new Star [NumberofStars];
 Ball[] fireworks = new Ball[25];
 Ball movedBall;
-Paddle myPaddle,yourPaddle;
+Paddle myPaddle, yourPaddle;
 float QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight;
 float netX, netY, netX2, netY2;
 //float tabX,tabY,tabWidth,tabHeight;
@@ -36,10 +36,10 @@ void setup() {
   netX2= displayWidth*1/2;
   netY2=  displayHeight*1;
 
-  
- 
-   
-   
+
+
+
+
   //population
   myBall = new Ball();
   //  yourBall = new Ball();
@@ -47,9 +47,9 @@ void setup() {
     fireworks[i] = new Ball(displayWidth*-1, displayHeight*-1, 0.5);
   }
   // yourBall.x
- movedBall = new Ball(displayWidth*-1, displayHeight*-1, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.yspeedChange);
- myPaddle = new Paddle(0, myBall.diameter);
- yourPaddle = new Paddle(displayWidth, myBall.diameter);
+  movedBall = new Ball(displayWidth*-1, displayHeight*-1, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.yspeedChange);
+  myPaddle = new Paddle(0, myBall.diameter);
+  yourPaddle = new Paddle(displayWidth, myBall.diameter);
 }
 //end setup
 void textPre() {
@@ -62,6 +62,8 @@ void draw() {
 
   myPaddle.draw();
   yourPaddle.draw();
+  myBall.tableYUpdate(myPaddle.tableY, myPaddle.tableHeight);
+  movedBall.tableYupdate(myPaddle.tableY, myPaddle.tableHeight);
   if ( myBall.disappear == true) {
     //empty IF
   } else {
@@ -84,21 +86,14 @@ void draw() {
     fireworks[i].draw();
   }
 
- // color(ligtPurple);
+  // color(ligtPurple);
   //rect(tabX,tabY,tabWidth,tabHeight);
-  strokeWeight(5);
 
-  strokeWeight(2);
   //line(goalX, goalY, goalX2, goalY2);
- // line(goalX3, goalY3, goalX4, goalY4);
- 
+  // line(goalX3, goalY3, goalX4, goalY4);
 } //end draw
 
 
-void mousePressed() {
-
-  movedBall = new Ball(mouseX, mouseY, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.yspeedChange);
-}//end mousePressed
 
 void textPost() {
   fill(white);
@@ -108,9 +103,17 @@ void Quittext() {
   text(exit, QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight);
   textPost();
 }
- void keyPressed() {
-    if( key=='W'| key=='w') myPaddle.up=true;
-    if( key=='S'| key=='s') myPaddle.down=true;
-    if( key==CODED| key==UP) myPaddle.up=true;
-    if( key==CODED| key==DOWN) myPaddle.down=true;
+void keyPressed() {
+ myPaddle.keyPressedWASD();
+ yourPaddle.keyPressedARROW();
 }
+
+void keyReleased() {
+  myPaddle.keyReleasedWASD();
+  yourPaddle.keyReleasedARROW();
+}//end keyreleased
+
+void mousePressed() {
+
+  movedBall = new Ball(mouseX, mouseY, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.yspeedChange);
+}//end mousePressed
