@@ -62,8 +62,9 @@ void draw() {
 
   myPaddle.draw();
   yourPaddle.draw();
-  myBall.tableYUpdate(myPaddle.tableY, myPaddle.tableHeight, myPaddle.tableWidth,myPaddle.tableX,myPaddle.paddleX,yourPaddle.paddleX);
-  movedBall.tableYpUpdate(myPaddle.tableY, myPaddle.tableHeight);
+  myBall.tableYUpdate(myPaddle.tableY, myPaddle.tableHeight, myPaddle.tableWidth, myPaddle.tableX, myPaddle.paddleX,yourPaddle.paddleX, myPaddle.paddleY,yourPaddle.paddleY,myPaddle.paddleWidth,myPaddle.paddleHeight,yourPaddle.paddleHeight);
+//  myBall.bounce(myPaddle.paddleX,yourPaddle.paddleX);
+//  movedBall.tableUpdate(myPaddle.tableY, myPaddle.tableHeight);
   if ( myBall.disappear == true) {
     //empty IF
   } else {

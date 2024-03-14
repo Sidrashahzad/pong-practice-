@@ -4,7 +4,7 @@ class Paddle {
   float tableX, tableY, tableWidth, tableHeight;
   float goalX, goalY, goalWidth, goalHeight;
   float goalX2, goalY2;
-  float PaddleX, PaddleY, PaddleWidth, PaddleHeight, PaddleStartHeight;
+  float paddleX, paddleY, paddleWidth, paddleHeight, PaddleStartHeight;
   float paddlecolor=#4C15CE;
   float PaddleTravelDistance;
   Boolean up=false, down=false;
@@ -12,7 +12,7 @@ class Paddle {
   //Purpose left and right paddles
   Paddle(float PaddleStartparameter, float ballDiameterParameter ) {
     goalWidth = ballDiameterParameter*2;
-    PaddleWidth=ballDiameterParameter*1/2;
+    paddleWidth=ballDiameterParameter*1/2;
     tableY=displayHeight*1/10;
     tableHeight=displayHeight*8/10;
 
@@ -20,14 +20,14 @@ class Paddle {
     if (PaddleStartparameter==0)goalX=PaddleStartparameter;
     if (PaddleStartparameter==displayWidth)
     {
-      goalX = PaddleStartparameter-goalWidth*2-PaddleWidth;
+      goalX = PaddleStartparameter-goalWidth*2-paddleWidth;
     }
 
-    this.PaddleX=goalX+goalWidth;
+    this.paddleX=goalX+goalWidth;
     if (PaddleStartparameter==displayWidth)goalX=PaddleStartparameter-goalWidth;
     this.PaddleStartHeight=0.25;
-    this.PaddleHeight=tableHeight*PaddleStartHeight;
-    this.PaddleY= tableY+(tableHeight*1/2)-(PaddleHeight*1/2);//
+    this.paddleHeight=tableHeight*PaddleStartHeight;
+    this.paddleY= tableY+(tableHeight*1/2)-(paddleHeight*1/2);//
 
     // Paddle2X=goalX3-PaddleWidth;
     paddlecolor=0;
@@ -42,17 +42,17 @@ class Paddle {
     ///float goalX3, goalY3, goalX4, goalY4;
   }
   void paddles() {
-    rect(PaddleX, PaddleY, PaddleWidth, PaddleHeight);
+    rect(paddleX, paddleY, paddleWidth, paddleHeight);
   }
 
   void movePaddleDown() {
-    PaddleY+=PaddleTravelDistance;
-    if (PaddleY>tableY+tableHeight-PaddleHeight) PaddleY=tableY+tableHeight-PaddleHeight;
+    paddleY+=PaddleTravelDistance;
+    if (paddleY>tableY+tableHeight-paddleHeight) paddleY=tableY+tableHeight-paddleHeight;
   }
 
   void movePaddleUp() {
-    PaddleY-=PaddleTravelDistance;
-    if (PaddleY<tableY)PaddleY=tableY;
+    paddleY-=PaddleTravelDistance;
+    if (paddleY<tableY)paddleY=tableY;
   }
   void keyPressedWASD() {
      if ( key=='W'| key=='w') myPaddle.up=true;

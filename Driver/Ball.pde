@@ -6,7 +6,7 @@ class Ball {
   float xspeed, yspeed, xspeedChange=1.0, yspeedChange=1.0;
   float gravity= 0.0;
   Boolean disappear=false, goalExplosion=false;
-  float tableY,tableHeight, paddleX;
+  float tableX,tableY,tableWidth,tableHeight, paddleX,paddleY,paddleWidth,paddleHeight;
     // static int count =25;
     //constructor
  Ball(){
@@ -75,30 +75,32 @@ class Ball {
     fill(0);
     step();
   }
-  void step() {
-    bounce();
-    yspeed += gravity;//Ball is not affected thus the pong ball has no gravity
-    x += xspeed * xspeedChange;
-    y += yspeed * xspeedChange;
-  }//end step
+ 
 
-  void bounce() {
-    if (x < 0+(diameter*1/2) || x > displayWidth - (diameter*1/2))  xspeed *= -1;
-    if (y < 0+(diameter*1/2) || y > displayHeight - (diameter*1/2)) yspeed *= -1;
-  }//bounce
+  
   void goalExplosion(float xParameter, float yParameter, float gravitya){
 for(int i=0; i < fireworks.length; i++){
 fireworks[i] = new Ball(xParameter, yParameter, gravitya);
 }
 
   }//end goal explosion
-  void tableUpdate(float tableYParameter, float tableHeightParameter, float tableWidthParameter, float tableXParameter, float paddleXParameter, float paddleYParameter, float paddleWidthParameter, float paddleHeightParameter){
-  tableY=tableYParameter;
-  tableHeight=tableHeightParameter;
-  tableWidth=tableXParameter+tableWidthParameter;
-  paddleX=(BallX<tableWidth*1/2)? myPaddleXParameter:yourPaddleParameter;
-  paddleY=paddleYParameter;
+  void tableYUpdate(float tableYParameter, float tableHeightParameter, float tableWidthParameter, float tableXParameter, float myPaddleXParameter,  float yourPaddleXParameter, float myPaddleYParameter, float yourPaddleYParameter,float paddleWidthParameter,float myPaddleHeightParameter, float yourPaddleHeightParameter){
+  tableY= tableYParameter;
+  tableHeight = tableHeightParameter;
+  tableWidth = tableXParameter+tableWidthParameter;
+  paddleX=(x <tableWidth*1/2)? myPaddleXParameter:yourPaddleXParameter;
+  paddleY=(x <tableWidth*1/2)? myPaddleYParameter:yourPaddleYParameter;
   paddleWidth=paddleWidthParameter;
-  paddleHeight=paddleHeightParameter;
+  paddleHeight = ( x <tableWidth*1/2)?myPaddleHeightParameter:yourPaddleHeightParameter;
 }
+void bounce( ) {
+    if ( x < 0+(diameter*1/2) || tableWidth >  - (diameter*1/2))  xspeed *= -1;
+    if (y < 0+(diameter*1/2) || tableHeight > - (diameter*1/2)) yspeed *= -1;
+  }//bounce
+   void step() {
+    bounce();
+    yspeed += gravity;//Ball is not affected thus the pong ball has no gravity
+    x += xspeed * xspeedChange;
+    y += yspeed * xspeedChange;
+  }//end step
 }
