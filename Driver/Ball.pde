@@ -92,13 +92,17 @@ fireworks[i] = new Ball(xParameter, yParameter, gravitya);
   paddleY=(x <tableWidth*1/2)? myPaddleYParameter:yourPaddleYParameter;
   paddleWidth=paddleWidthParameter;
   paddleHeight = ( x <tableWidth*1/2)?myPaddleHeightParameter:yourPaddleHeightParameter;
+ 
+ //if ( x < paddleX+paddleWidth || x > yourPaddleXParameter)  xspeed *= -1;
+   //if (y> -(diameter*1/2) <= myPaddleYParameter || y+diameter*1/2 >= yourPaddleYParameter ) yspeed *= -1;
+
 }
-void bounce( ) {
-    if ( x < 0+(diameter*1/2) || tableWidth >  - (diameter*1/2))  xspeed *= -1;
-    if (y < 0+(diameter*1/2) || tableHeight > - (diameter*1/2)) yspeed *= -1;
-  }//bounce
+void bounce(float myPaddleXParameter, float yourPaddleXParameter,float myPaddleYParameter, float yourPaddleYParameter ) {
+ if ( x-(diameter*1/2)<myPaddleXParameter+paddleWidth  || x+(diameter*1/2) > yourPaddleXParameter)  xspeed *= -1;
+ if ( y -(diameter*1/2)<myPaddleYParameter+paddleHeight|| y+(diameter*1/2) > yourPaddleYParameter) yspeed*= -1;
+ }//bounce
    void step() {
-    bounce();
+   bounce(myPaddle.paddleX,yourPaddle.paddleX,myPaddle.paddleY,yourPaddle.paddleY);
     yspeed += gravity;//Ball is not affected thus the pong ball has no gravity
     x += xspeed * xspeedChange;
     y += yspeed * xspeedChange;

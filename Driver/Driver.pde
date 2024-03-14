@@ -65,6 +65,7 @@ void draw() {
   myBall.tableYUpdate(myPaddle.tableY, myPaddle.tableHeight, myPaddle.tableWidth, myPaddle.tableX, myPaddle.paddleX,yourPaddle.paddleX, myPaddle.paddleY,yourPaddle.paddleY,myPaddle.paddleWidth,myPaddle.paddleHeight,yourPaddle.paddleHeight);
 //  myBall.bounce(myPaddle.paddleX,yourPaddle.paddleX);
 //  movedBall.tableUpdate(myPaddle.tableY, myPaddle.tableHeight);
+  myBall.bounce(myPaddle.paddleX,yourPaddle.paddleX,myPaddle.paddleY,yourPaddle.paddleY);
   if ( myBall.disappear == true) {
     //empty IF
   } else {
@@ -105,13 +106,13 @@ void Quittext() {
   textPost();
 }
 void keyPressed() {
- myPaddle.keyPressedWASD();
- yourPaddle.keyPressedARROW();
+myPaddle.keyPressedWASD();
+yourPaddle.keyPressedARROW();
 }
 
 void keyReleased() {
-  myPaddle.keyReleasedWASD();
-  yourPaddle.keyReleasedARROW();
+myPaddle.keyReleasedWASD();
+yourPaddle.keyReleasedARROW();
 }//end keyreleased
 
 void mousePressed() {
