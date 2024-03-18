@@ -49,12 +49,12 @@ class Paddle {
   void movePaddleDown() {
     paddleY+=PaddleTravelDistance;
     if (paddleY>tableY+tableHeight-paddleHeight) paddleY=tableY+tableHeight-paddleHeight;
-  }
+}
 
   void movePaddleUp() {
     paddleY-=PaddleTravelDistance;
     if (paddleY<tableY)paddleY=tableY;
-  
+ 
   }
   void keyPressedWASD() {
      if ( key=='W'| key=='w') up=true;
@@ -70,6 +70,6 @@ class Paddle {
   }//end keyReleasedWASD()
   void keyReleasedARROW() {
      if ( key==CODED & key==UP) up=false;
-  if ( key==CODED & key==DOWN) down=false;
+     if ( key==CODED & key==DOWN) down=false;
   }//end keyReleasedWASD
 }//end paddle class

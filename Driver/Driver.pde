@@ -15,7 +15,7 @@ color grey = #A09999;
 color white = #FAFFFA;
 color Black = #000000;
 color ligtPurple=#EFBBF7;
-color pongtablecolor = 255 ;//ERROR move to TabLe CLASS
+color pongtablecolor = #51A544 ;//ERROR move to TabLe CLASS
 float gravitya=-0.5;
 String exit="X";
 PFont Pfont;
