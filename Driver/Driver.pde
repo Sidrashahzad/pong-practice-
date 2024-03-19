@@ -15,7 +15,7 @@ color grey = #A09999;
 color white = #FAFFFA;
 color Black = #000000;
 color ligtPurple=#EFBBF7;
-color pongtablecolor = #51A544 ;//ERROR move to TabLe CLASS
+color pongtablecolor = #B18EBC ;//ERROR move to TabLe CLASS
 float gravitya=-0.5;
 String exit="X";
 PFont Pfont;
@@ -80,20 +80,24 @@ void draw() {
   }
 
 
-  if (myBall.x<(2*myBall.diameter) || myBall.x>(displayWidth-(2*myBall.diameter))) {
+ /* if (myBall.x<(2*myBall.diameter) || myBall.x>(displayWidth-(2*myBall.diameter))) {
     myBall.goalExplosion(myBall.x, myBall.y, gravitya);
     myBall.goalExplosion = false;
   }
   for (int i=0; i < fireworks.length; i++) {
     fireworks[i].draw();
-  }
-    if (myBall.x< myPaddle.paddleX || myBall.x>(displayWidth-(2*myBall.diameter))) {
+  }*/
+  if (myBall.x < myPaddle.paddleX+myPaddle.paddleWidth-(1/2*myBall.diameter)|| myBall.x > myPaddle.paddleX+myPaddle.paddleWidth+(1/2*myBall.diameter)) {
     myBall.goalExplosion(myBall.x, myBall.y, gravitya);
-    myBall.goalExplosion = true;
+    myBall.goalExplosion = false;
+    
   }
-for (int i=0; i < fireworks.length; i++) {
-    fireworks[i].draw();
+    if (myBall.y < myPaddle.paddleY+myPaddle.paddleHeight-(1/2*myBall.diameter)|| myBall.y > myPaddle.paddleY+myPaddle.paddleHeight+(1/2*myBall.diameter)) {
+    myBall.goalExplosion(myBall.x, myBall.y, gravitya);
+    myBall.goalExplosion = false;
   }
+
+
   // color(ligtPurple);
   //rect(tabX,tabY,tabWidth,tabHeight);
 

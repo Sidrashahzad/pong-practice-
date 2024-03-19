@@ -33,6 +33,11 @@ class Paddle {
     paddlecolor=0;
     this.PaddleTravelDistance=4;
   }//end paddle constructor
+
+//pong tableconstructor 
+//caution 
+  Paddle () {
+  }//end Pongtable constructor 
   void draw() {
     fill(paddlecolor);
     paddles();
@@ -49,16 +54,15 @@ class Paddle {
   void movePaddleDown() {
     paddleY+=PaddleTravelDistance;
     if (paddleY>tableY+tableHeight-paddleHeight) paddleY=tableY+tableHeight-paddleHeight;
-}
+  }
 
   void movePaddleUp() {
     paddleY-=PaddleTravelDistance;
     if (paddleY<tableY)paddleY=tableY;
- 
   }
   void keyPressedWASD() {
-     if ( key=='W'| key=='w') up=true;
-     if ( key=='S'| key=='s') down=true;
+    if ( key=='W'| key=='w') up=true;
+    if ( key=='S'| key=='s') down=true;
   }//keyPressed
   void keyPressedARROW() {
     if ( key==CODED & keyCode==UP) up=true;
@@ -69,7 +73,7 @@ class Paddle {
     if ( key=='S'| key=='s') down=false;
   }//end keyReleasedWASD()
   void keyReleasedARROW() {
-     if ( key==CODED & keyCode==UP) up=false;
-     if ( key==CODED & keyCode==DOWN) down=false;
+    if ( key==CODED & keyCode==UP) up=false;
+    if ( key==CODED & keyCode==DOWN) down=false;
   }//end keyReleasedWASD
 }//end paddle class
