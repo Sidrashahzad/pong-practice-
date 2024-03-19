@@ -38,8 +38,8 @@ class Paddle {
     paddles();
     fill(0);
     //
-    if (up==true) movePaddleUp();
-    if (down==true)movePaddleDown();
+    if (up == true) movePaddleUp();
+    if (down == true)movePaddleDown();
     ///float goalX3, goalY3, goalX4, goalY4;
   }
   void paddles() {
@@ -61,15 +61,15 @@ class Paddle {
      if ( key=='S'| key=='s') down=true;
   }//keyPressed
   void keyPressedARROW() {
-    if ( key==CODED & key==UP) up=true;
-    if ( key==CODED & key==DOWN) down=true;
+    if ( key==CODED & keyCode==UP) up=true;
+    if ( key==CODED & keyCode==DOWN) down=true;
   }//keyPressedARROW
   void keyReleasedWASD() {
     if ( key=='W'| key=='w') up=false;
     if ( key=='S'| key=='s') down=false;
   }//end keyReleasedWASD()
   void keyReleasedARROW() {
-     if ( key==CODED & key==UP) up=false;
-     if ( key==CODED & key==DOWN) down=false;
+     if ( key==CODED & keyCode==UP) up=false;
+     if ( key==CODED & keyCode==DOWN) down=false;
   }//end keyReleasedWASD
 }//end paddle class

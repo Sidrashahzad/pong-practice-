@@ -63,9 +63,9 @@ void draw() {
   myPaddle.draw();
   yourPaddle.draw();
   myBall.tableYUpdate(myPaddle.tableY, myPaddle.tableHeight, myPaddle.tableWidth, myPaddle.tableX, myPaddle.paddleX,yourPaddle.paddleX, myPaddle.paddleY,yourPaddle.paddleY,myPaddle.paddleWidth,myPaddle.paddleHeight,yourPaddle.paddleHeight);
-//  myBall.bounce(myPaddle.paddleX,yourPaddle.paddleX);
+  //myBall.bounce(myPaddle.paddleX,yourPaddle.paddleX);
 //  movedBall.tableUpdate(myPaddle.tableY, myPaddle.tableHeight);
-  myBall.bounce(myPaddle.paddleX,yourPaddle.paddleX,myPaddle.paddleY,yourPaddle.paddleY);
+
   if ( myBall.disappear == true) {
     //empty IF
   } else {
@@ -87,7 +87,13 @@ void draw() {
   for (int i=0; i < fireworks.length; i++) {
     fireworks[i].draw();
   }
-
+    if (myBall.x< myPaddle.paddleX || myBall.x>(displayWidth-(2*myBall.diameter))) {
+    myBall.goalExplosion(myBall.x, myBall.y, gravitya);
+    myBall.goalExplosion = true;
+  }
+for (int i=0; i < fireworks.length; i++) {
+    fireworks[i].draw();
+  }
   // color(ligtPurple);
   //rect(tabX,tabY,tabWidth,tabHeight);
 
