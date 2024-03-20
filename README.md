@@ -20,7 +20,7 @@ computers Advanced Project
 
 []Paddle for player 2- Blue 
 
-[] 2 nets
+[] 2 nets create lines
 
 [] dotted line in the middle 
 
