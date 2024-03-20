@@ -11,10 +11,10 @@ class Paddle {
   // overloaded constructor
   //Purpose left and right paddles
   Paddle(float PaddleStartparameter, float ballDiameterParameter ) {
+    tablePopulation();
     goalWidth = ballDiameterParameter*2;
     paddleWidth=ballDiameterParameter*1/2;
-    tableY=displayHeight*1/10;
-    tableHeight=displayHeight*8/10;
+   
 
     //CAUTION netX will
     if (PaddleStartparameter==0)goalX=PaddleStartparameter;
@@ -34,19 +34,34 @@ class Paddle {
     this.PaddleTravelDistance=4;
   }//end paddle constructor
 
-//pong tableconstructor 
-//caution 
-  Paddle () {
-  }//end Pongtable constructor 
+  //pong tableconstructor
+  //caution
+
+
   void draw() {
-    fill(paddlecolor);
+    if(paddleX<displayWidth*1/2){
+    fill(#BC83E3);
+    table();
+    fill(0);
+    }fill(paddlecolor);
     paddles();
     fill(0);
     //
+  line(displayWidth*1/2,tableY,displayWidth*1/2,displayHeight*9/10 );
     if (up == true) movePaddleUp();
     if (down == true)movePaddleDown();
     ///float goalX3, goalY3, goalX4, goalY4;
   }
+  //Draw table
+  void tablePopulation() {
+    tableX=displayWidth*0;
+    tableY= displayHeight*1/10;
+    tableWidth=displayWidth-1;
+    tableHeight=displayHeight*8/10;
+  }
+  void table() {
+    rect(tableX,tableY,tableWidth,tableHeight);
+  }//end table
   void paddles() {
     rect(paddleX, paddleY, paddleWidth, paddleHeight);
   }

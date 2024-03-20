@@ -6,31 +6,24 @@ Ball myBall;//Both half's of constructor
 Ball[] fireworks = new Ball[25];
 Ball movedBall;
 Paddle myPaddle, yourPaddle;
-float QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight;
+
 float netX, netY, netX2, netY2;
 //float tabX,tabY,tabWidth,tabHeight;
-color QuitbuttonColor;
-color red = #F52A2A;
-color grey = #A09999;
+
+
 color white = #FAFFFA;
 color Black = #000000;
 color ligtPurple=#EFBBF7;
-color pongtablecolor = #B18EBC ;//ERROR move to TabLe CLASS
+color pongtablecolor = 255 ;//ERROR move to TabLe CLASS
 float gravitya=-0.5;
-String exit="X";
-PFont Pfont;
 //float delay=0.5;
 void setup() {
   fullScreen();
 
   println("Exciting.....not exciting");
   //exit();
-  Pfont= createFont("ArialNarrow", 48);
-  QuitrectX= displayWidth*19.2/20;
-  QuitrectY = displayHeight*0;
-  QuitrectWidth= displayWidth*1/25;
-  QuitrectHeight = displayHeight*1/20;
-
+ 
+buttonsetup();
   netX = displayWidth*1/2;
   netY = displayHeight*0;
   netX2= displayWidth*1/2;
@@ -52,14 +45,10 @@ void setup() {
   yourPaddle = new Paddle(displayWidth, myBall.diameter);
 }
 //end setup
-void textPre() {
-  fill(Black);
-  textAlign(CENTER, CENTER);
-  textFont(Pfont, 20);
-}
+
 void draw() {
   background(pongtablecolor);//ERROR nightmode is known in class not driver
-
+  buttondraw();
   myPaddle.draw();
   yourPaddle.draw();
   myBall.tableYUpdate(myPaddle.tableY, myPaddle.tableHeight, myPaddle.tableWidth, myPaddle.tableX, myPaddle.paddleX,yourPaddle.paddleX, myPaddle.paddleY,yourPaddle.paddleY,myPaddle.paddleWidth,myPaddle.paddleHeight,yourPaddle.paddleHeight);
@@ -80,22 +69,22 @@ void draw() {
   }
 
 
- /* if (myBall.x<(2*myBall.diameter) || myBall.x>(displayWidth-(2*myBall.diameter))) {
-    myBall.goalExplosion(myBall.x, myBall.y, gravitya);
-    myBall.goalExplosion = false;
-  }
+  if (myBall.x<(2*myBall.diameter) || myBall.x>(displayWidth-(2*myBall.diameter))) 
+    myBall.goalExplosion(myBall.x, myBall.y, gravitya);  
   for (int i=0; i < fireworks.length; i++) {
     fireworks[i].draw();
-  }*/
+  }/*
   if (myBall.x < myPaddle.paddleX+myPaddle.paddleWidth-(1/2*myBall.diameter)|| myBall.x > myPaddle.paddleX+myPaddle.paddleWidth+(1/2*myBall.diameter)) {
     myBall.goalExplosion(myBall.x, myBall.y, gravitya);
-    myBall.goalExplosion = false;
+      myBall.goalExplosion = true;
+ 
+  }*/
     
-  }
-    if (myBall.y < myPaddle.paddleY+myPaddle.paddleHeight-(1/2*myBall.diameter)|| myBall.y > myPaddle.paddleY+myPaddle.paddleHeight+(1/2*myBall.diameter)) {
+  
+  /*  if (myBall.y < myPaddle.paddleY+myPaddle.paddleHeight-(1/2*myBall.diameter)|| myBall.y > myPaddle.paddleY+myPaddle.paddleHeight+(1/2*myBall.diameter)) {
     myBall.goalExplosion(myBall.x, myBall.y, gravitya);
     myBall.goalExplosion = false;
-  }
+  }*/
 
 
   // color(ligtPurple);
@@ -107,14 +96,7 @@ void draw() {
 
 
 
-void textPost() {
-  fill(white);
-}
-void Quittext() {
-  textPre();
-  text(exit, QuitrectX, QuitrectY, QuitrectWidth, QuitrectHeight);
-  textPost();
-}
+
 void keyPressed() {
 myPaddle.keyPressedWASD();
 yourPaddle.keyPressedARROW();
@@ -126,6 +108,6 @@ yourPaddle.keyReleasedARROW();
 }//end keyreleased
 
 void mousePressed() {
-
+buttonPressed();
   movedBall = new Ball(mouseX, mouseY, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.yspeedChange);
 }//end mousePressed
