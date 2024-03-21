@@ -40,7 +40,7 @@ class Paddle {
 
   void draw() {
     if(paddleX<displayWidth*1/2){
-    fill(#BC83E3);
+    fill(#B9D8FF);
     table();
     fill(0);
     }fill(paddlecolor);

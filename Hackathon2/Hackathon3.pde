@@ -14,7 +14,7 @@ float netX, netY, netX2, netY2;
 color white = #FAFFFA;
 color Black = #000000;
 color ligtPurple=#EFBBF7;
-color pongtablecolor = 255 ;//ERROR move to TabLe CLASS
+color pongtablecolor = #AC98C1 ;//ERROR move to TabLe CLASS
 float gravitya=-0.5;
 //float delay=0.5;
 void setup() {
