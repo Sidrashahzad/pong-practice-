@@ -93,20 +93,36 @@ fireworks[i] = new Ball(xParameter, yParameter, gravitya);
   paddleWidth=paddleWidthParameter;
   paddleHeight = ( x <tableWidth*1/2)?myPaddleHeightParameter:yourPaddleHeightParameter;
  
+ if(x<tableWidth*1/2)
+ { 
+   if ( x < myPaddleXParameter+paddleWidth+(diameter*1/2))  xspeed*= -1 ;
+ } 
+
  
-    if ( x < myPaddleXParameter+paddleWidthParameter+(diameter*1/2)||x > yourPaddleXParameter-(diameter*1/2))  xspeed*= -1 ;
-  
-   if ( y < tableY+(diameter*1/2)||y > tableY+tableHeight-(diameter*1/2)) yspeed *= -1;
+if (x>tableWidth*1/2)
+{
+  if ( x > yourPaddleXParameter-(diameter*1/2)) xspeed*= -1 ;
+}   
+  //   if ( x > yourPaddleXParameter-(diameter*1/2))  xspeed*= -1 ;
    
-   if ( y < myPaddleYParameter+myPaddleHeightParameter|| y < yourPaddleYParameter+yourPaddleHeightParameter) yspeed *= -1;
+    if ( y < tableY+(diameter*1/2) || y > tableY+tableHeight-(diameter*1/2)) yspeed *= -1;
 
-
+ 
+   //if ( y < myPaddleYParameter+myPaddleHeightParameter || x < myPaddleXParameter+paddleWidthParameter+(diameter*1/2));
+   //y < 
+   //) {
+    //  if ( x < myPaddleXParameter+paddleWidthParameter+(diameter*1/2)||x > yourPaddleXParameter-(diameter*1/2));
+//   }
+ 
+  //  if ( y > myPaddleYParameter+myPaddleHeightParameter || y > yourPaddleYParameter+yourPaddleHeightParameter ) {
+   //   if ( x < myPaddleXParameter+paddleWidthParameter+(diameter*1/2)||x > yourPaddleXParameter-(diameter*1/2));
+  // }
 
 
 }
 //void bounce( float myPaddleXParameter,  float yourPaddleXParameter) {
 
-//}//bounce
+
 
    void step() {
     yspeed += gravity;//Ball is not affected thus the pong ball has no gravity
