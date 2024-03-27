@@ -94,17 +94,13 @@ fireworks[i] = new Ball(xParameter, yParameter, gravitya);
   paddleHeight = ( x <tableWidth*1/2)?myPaddleHeightParameter:yourPaddleHeightParameter;
  
  if(x<tableWidth*1/2)
- { 
-   if ( x < myPaddleXParameter+paddleWidth+(diameter*1/2))  xspeed*= -1 ;
- } 
+  {
+   if ( x <paddleX+paddleWidth +(diameter*1/2))  xspeed*= -1 ;
+  }
 
- 
-if (x>tableWidth*1/2)
-{
-  if ( x > yourPaddleXParameter-(diameter*1/2)) xspeed*= -1 ;
-}   
-  //   if ( x > yourPaddleXParameter-(diameter*1/2))  xspeed*= -1 ;
-   
+ if(x>tableWidth*1/2) 
+{ if ( x > paddleX-(diameter*1/2))  xspeed*= -1 ;
+}  
     if ( y < tableY+(diameter*1/2) || y > tableY+tableHeight-(diameter*1/2)) yspeed *= -1;
 
  

@@ -23,7 +23,7 @@ void setup() {
   println("Exciting.....not exciting");
   //exit();
  
-buttonsetup();
+
   netX = displayWidth*1/2;
   netY = displayHeight*0;
   netX2= displayWidth*1/2;
@@ -48,7 +48,7 @@ buttonsetup();
 
 void draw() {
   background(pongtablecolor);//ERROR nightmode is known in class not driver
-  buttondraw();
+
   myPaddle.draw();
   yourPaddle.draw();
   myBall.tableYUpdate(myPaddle.tableY, myPaddle.tableHeight, myPaddle.tableWidth, myPaddle.tableX, myPaddle.paddleX,yourPaddle.paddleX, myPaddle.paddleY,yourPaddle.paddleY,myPaddle.paddleWidth,myPaddle.paddleHeight,yourPaddle.paddleHeight);
@@ -69,33 +69,32 @@ void draw() {
   }
 
 
-   if ( myBall.x < myPaddle.paddleX+myPaddle.paddleWidth||  myBall.x > yourPaddle.paddleX+myPaddle.paddleWidth)
-    myBall.goalExplosion(myBall.x, myBall.y, gravitya);  
+   if (  myBall.y<myPaddle.paddleY &&  myBall.x< myPaddle.paddleX+myPaddle.paddleWidth+(myBall.diameter*1/2))
+   myBall.goalExplosion(myBall.x, myBall.y, gravitya);  
+  for (int i=0; i < fireworks.length; i++) {
+    fireworks[i].draw();
+
+  }
+  
+     if (  myBall.y>myPaddle.paddleY+myPaddle.paddleHeight &&  myBall.x< myPaddle.paddleX+myPaddle.paddleWidth+(myBall.diameter*1/2))
+   myBall.goalExplosion(myBall.x, myBall.y, gravitya);  
   for (int i=0; i < fireworks.length; i++) {
     fireworks[i].draw();
   }
 
-  /*
-  /*
+   if (  myBall.y<yourPaddle.paddleY &&  myBall.x>yourPaddle.paddleX-(myBall.diameter*1/2))
+   myBall.goalExplosion(myBall.x, myBall.y, gravitya);  
+  for (int i=0; i < fireworks.length; i++) {
+    fireworks[i].draw();
+  }
+
   
-  if (myBall.x < myPaddle.paddleX+myPaddle.paddleWidth-(1/2*myBall.diameter)|| myBall.x > myPaddle.paddleX+myPaddle.paddleWidth+(1/2*myBall.diameter)) {
-    myBall.goalExplosion(myBall.x, myBall.y, gravitya);
-      myBall.goalExplosion = true;
- 
-  }*/
-    
-  
-  /*  if (myBall.y < myPaddle.paddleY+myPaddle.paddleHeight-(1/2*myBall.diameter)|| myBall.y > myPaddle.paddleY+myPaddle.paddleHeight+(1/2*myBall.diameter)) {
-    myBall.goalExplosion(myBall.x, myBall.y, gravitya);
-    myBall.goalExplosion = false;
-  }*/
+  if (  myBall.y>yourPaddle.paddleY +yourPaddle.paddleHeight &&  myBall.x>yourPaddle.paddleX-(myBall.diameter*1/2))
+   myBall.goalExplosion(myBall.x, myBall.y, gravitya);  
+  for (int i=0; i < fireworks.length; i++) {
+    fireworks[i].draw();
+  }
 
-
-  // color(ligtPurple);
-  //rect(tabX,tabY,tabWidth,tabHeight);
-
-  //line(goalX, goalY, goalX2, goalY2);
-  // line(goalX3, goalY3, goalX4, goalY4);
 } //end draw
 
 
@@ -112,6 +111,6 @@ yourPaddle.keyReleasedARROW();
 }//end keyreleased
 
 void mousePressed() {
-buttonPressed();
+myPaddle.buttonPressed();
   movedBall = new Ball(mouseX, mouseY, myBall.diameter, myBall.colour, myBall.xspeed, myBall.yspeed, myBall.xspeedChange, myBall.yspeedChange);
 }//end mousePressed
